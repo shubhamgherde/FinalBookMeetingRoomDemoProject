@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:fragment="headerfiles">
+    <title>Introduction to SpringBoot Security</title>
+    <meta charset="UTF-8"/>
+    <link th:href="@{~/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{~/fontawesome/css/all.css}" rel="stylesheet">
+</head>
+<body>
+<div th:fragment="nav">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Admin Home Page</a>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#" th:href="@{~/UserManagement}"><i class="fa fa-home"></i>User Management</a>
+                </li>
+                                 <li class="nav-item">
+                    <a class="nav-link" href="#" th:href="@{~/viewRoom}"><i class="fa fa-home"></i>View Room</a>
+                </li>
+                                <li class="nav-item">
+                    <a class="nav-link" href="#" th:href="@{~/addRoom}"><i class="fa fa-home"></i>Add Room</a>
+                </li>
+                                <li class="nav-item">
+                    <a class="nav-link" href="#" th:href="@{~/index}"><i class="fa fa-home"></i>View All Request</a>
+                </li>
+                                 
+                
+                
+            </ul>
+            <form class="form-inline my-2 my-lg-0" form-method="post" th:action="@{/logout}">
+                <button sec:authorize="isAuthenticated()" class="btn btn-outline-danger my-2 my-sm-0 btn-sm" type="submit">Logout</button>
+               
+            </form>
+        </div>
+    </nav>
+</div>
+
+
+<div align="center">
+        <h1>Edit User</h1>
+        <br />
+        <form action="#" th:action="@{/save}" th:object="${user}"
+            method="post">
+ 
+            <table border="0" cellpadding="10">
+                  <tr>
+                    <td></td>
+                    <td><input type="hidden" th:field="*{id}" readonly="readonly" /></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="hidden" th:field="*{name}" readonly="readonly" /></td>
+                </tr>
+                 <tr>
+                    <td>Email:</td>
+                    <td><input type="text" th:field="*{email}" readonly="readonly" /></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="hidden" th:field="*{password}" readonly="readonly" /></td>
+                </tr>
+                 <tr> 
+                    <td>Department:</td>
+                    <td>
+                    <select th:field="*{department}">
+    <option value="java">java</option>
+    <option value="ios">ios</option>
+    <option value="android">android</option>
+    <option value="python">python</option>
+</select></td>
+                </tr>
+                <tr>
+                    <td>Status:</td>
+                    <td>
+                    <select th:field="*{status}">
+    <option value="VERIFIED">VERIFIED</option>
+    <option value="BLOCK">BLOCK</option>
+    
+</select></td>
+                </tr>
+                 <tr>
+                    <td>Roles:</td>
+                    <td>
+                    <select th:field="*{roles}" multiple="multiple">
+    <option value="1">ADMIN</option>
+    <option value="2">USER</option>
+    <option value="3">HR</option>
+    <option value="4">TL</option>
+</select></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><button type="submit">Save</button> </td>
+                </tr>
+             
+                
+            </table>
+        </form>
+    </div>
+
+
+</body></html>

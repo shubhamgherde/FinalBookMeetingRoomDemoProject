@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link th:href="@{/tableFormat.css}" rel="stylesheet">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: #337ab7;
+}
+
+li {
+	float: left;
+}
+
+li a {
+	display: block;
+	color: white;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+}
+
+li a:hover {
+	background-color: #111;
+}
+
+.dropbtn {
+	background-color: #4CAF50;
+	color: white;
+	padding: 16px;
+	font-size: 16px;
+	border: none;
+	min-width: 160px;
+	cursor: pointer;
+}
+
+.dropdown {
+	position: relative;
+	display: inline-block;
+}
+
+.dropdown-content {
+	display: none;
+	position: absolute;
+	right: 0;
+	background-color: #f9f9f9;
+	min-width: 160px;
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+	z-index: 1;
+}
+
+.dropdown-content a {
+	color: black;
+	padding: 12px 16px;
+	text-decoration: none;
+	display: block;
+}
+
+.dropdown-content a:hover {
+	background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+	display: block;
+}
+
+.dropdown:hover .dropbtn {
+	background-color: #3e8e41;
+}
+
+ol li {
+	list-style-type: none;
+}
+</style>
+</head>
+<body>
+
+	<div th:insert="tlPages/tlHomeForAll"></div>
+	<ol>
+		<li>
+			<h3>Cancel Request</h3>
+		</li>
+		<li style="float: right;">
+
+			<div class="dropdown" style="float: right;">
+				<button class="dropbtn">
+					Select Status <i class="fa fa-caret-down"></i>
+				</button>
+				<div class="dropdown-content">
+					<a href="#" th:href="@{/pendingStatusTl}">Pending</a> <a href="#"
+						th:href="@{/confirmStatusTl}">Confirm</a> <a href="#"
+						th:href="@{/cancelStatusTl}">Cancel</a>
+				</div>
+			</div>
+		</li>
+	</ol>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<div align="center">
+		    
+		<table border="1">
+			<thead>
+				  
+				<tr>
+					                
+					<th>Booking_ID</th>                 
+					<th>Room ID</th>   
+					<th>Start Date Time</th>                 
+					<th>End Date Time</th>                 
+					<th>User Email</th>          
+					<th>Status</th>             
+				</tr>
+				     
+			</thead>
+			<tbody>
+				<tr th:each="roomRequest :${list}">
+					<td th:text="${roomRequest.booking_id}">Booking_ID</td>
+					<td th:text="${roomRequest.id}">ID</td>
+					<td th:text="${roomRequest.bookingDateFrom}">Start date</td>
+					<td th:text="${roomRequest.bookingDateTo}">End Date</td>
+					<td th:text="${roomRequest.user_mail}">User Email</td>
+					<td th:text="${roomRequest.status}">Status</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

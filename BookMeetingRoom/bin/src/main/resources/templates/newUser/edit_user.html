@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:fragment="headerfiles">
+<title>Introduction to SpringBoot Security</title>
+<meta charset="UTF-8" />
+<style>
+#main {
+	width: 950px;
+	height: 550px; /
+	display: -webkit-flex; / Safari */ / -webkit-align-items : center; /
+	Safari 7.0+ */ display : flex;
+	align-items: center;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+input[type=text], select, textarea {
+	width: 80%;
+	padding: 12px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	resize: vertical;
+}
+
+label {
+	padding: 12px 12px 12px 0;
+	display: inline-block;
+}
+
+input[type=submit] {
+	background-color: #4CAF50;
+	color: white;
+	padding: 12px 20px;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	position: relative;
+	left: 140px; //
+	float: center;
+}
+
+input[type=submit]:hover {
+	background-color: #45a049;
+}
+</style>
+
+</head>
+
+<body>
+	<div th:insert="adminHome"></div>
+
+	<div align="center">
+		<br>
+
+
+		<form action="#" th:action="@{/save}" th:object="${user}"
+			method="post">
+
+			<table style="text-align: left">
+				<tr>
+					<td></td>
+					<td><input type="hidden" th:field="*{id}" readonly="readonly" /></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><input type="hidden" th:field="*{name}"
+						readonly="readonly" /></td>
+				</tr>
+				<tr>
+					<td>Email:</td>
+					<td><input type="text" th:field="*{email}" readonly="readonly" /></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><input type="hidden" th:field="*{password}"
+						readonly="readonly" /></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><input type="hidden" th:field="*{status}"
+						readonly="readonly" /></td>
+				</tr>
+				<tr>
+					<td>Department:</td>
+					<td><select th:field="*{department}">
+							<option value="JAVA">JAVA</option>
+							<option value="IOS">IOS</option>
+							<option value="ANDROID">ANDROID</option>
+							<option value="PYTHON">PYTHON</option>
+					</select></td>
+				</tr>
+				<tr>
+					<td>Roles:</td>
+					<td><select th:field="*{roles}">
+							<option value="1">ADMIN</option>
+							<option value="2">USER</option>
+							<option value="3">PM</option>
+							<option value="4">TL</option>
+					</select></td>
+				</tr>
+				<tr>
+					                    
+					<td colspan="2"><button type="submit">Save</button></td>
+					                
+				</tr>
+
+
+			</table>
+
+		</form>
+
+	</div>
+
+
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:fragment="headerfiles">
+    <title>Introduction to SpringBoot Security</title>
+    <meta charset="UTF-8"/>
+    <link th:href="@{/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/fontawesome/css/all.css}" rel="stylesheet">
+    <link th:href="@{/tableFormat.css}" rel="stylesheet">
+</head>
+<body>
+<div th:insert="adminHome"></div>
+	
+	<div th:fragment="nav">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#" th:href="@{/confirmRequest}"><i class="fa fa-home"></i>Confirm</a>
+                </li>
+                                 <li class="nav-item">
+                    <a class="nav-link" href="#" th:href="@{/pendingRequest}"><i class="fa fa-home"></i>Pending</a>
+                </li>
+                                <li class="nav-item">
+                    <a class="nav-link" href="#" th:href="@{/cancelRequest}"><i class="fa fa-home"></i>Cancel</a>
+                </li>     
+            </ul>
+            </div>
+    </nav>
+</div>
+
+<div align="center">
+    <h1>Room Request</h1>
+
+    <table border="1" >
+        <thead>		
+            <tr>
+                <th>Booking_ID</th>
+                <th>Room ID</th>
+                <th>Booking Date</th>
+                <th>User Email</th>
+
+ 				
+            </tr>
+        </thead>
+
+<tbody>
+	<tr th:each="roomRequest :${listRoom}">
+	
+		<td th:text="${roomRequest.booking_id}">Booking_ID</td>
+		<td th:text="${roomRequest.id}">ID</td>
+		<td th:text="${roomRequest.bookingDate}">Booking Date</td>
+		<td th:text="${roomRequest.user_mail}">User Email</td>
+		
+		
+	</tr>
+</tbody> 
+ 
+ </table>
+ </div>
+
+</body>
+</html>

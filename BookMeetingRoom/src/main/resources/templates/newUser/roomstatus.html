@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:fragment="headerfiles">
+    <title>Introduction to SpringBoot Security</title>
+    <meta charset="UTF-8"/>
+    <link th:href="@{/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/fontawesome/css/all.css}" rel="stylesheet">
+    <link th:href="@{/tableFormat.css}" rel="stylesheet">
+</head>
+<body>
+<div th:insert="userHome"></div>
+
+<div align="center">
+    <h1>Room Booking Status</h1>
+
+    <table border="1" >
+        <thead>
+            <tr>
+                <th>Room ID</th>
+                <th>User Mail</th>
+                <th>Booking Date</th>
+
+
+				
+                 
+ 				
+            </tr>
+        </thead>
+ <tbody>
+	<tr th:each="roomStatus :${list}">
+	
+		<td th:text="${roomStatus.id}">ID</td>
+		<td th:text="${roomStatus.user_mail}">User_mail</td>
+		<td th:text="${roomStatus.bookingDate}">BookingDate</td>
+		
+
+		
+	
+	</tr>
+</tbody> 
+ 
+ </table>
+ </div>
+</body></html>

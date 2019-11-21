@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+	
+<head>
+<title>CSS Template</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link th:href="@{/tableFormat.css}" rel="stylesheet">
+<style>
+</style>
+</head>
+<body>
+	<div th:insert="pmPages/pmHomeForAll"></div>
+	<h3>Pending Mail Request</h3>
+	<div >
+		<center>
+			<div>
+				         <br /> <br />     
+				<table border="1" cellpadding="10">
+					        
+					<thead>
+						<tr>
+							               
+							<th>Request ID</th>                 
+							<th>User_mail</th>                 
+							<th>New_User_mail</th>                                
+							<th>Confirm</th>                 
+							<th>Cancel</th>             
+						</tr>
+						        
+					</thead>
+					<tbody>
+						<tr th:each="emp :${mail}">
+
+							<td th:text="${emp.mailrequest_id}">Booking ID</td>
+							<td th:text="${emp.user_mail}">Room ID</td>
+							<td th:text="${emp.new_user_mail}">User_mail</td>
+							<td><a
+								th:href="@{'/changeConfirmmailPm/' + ${emp.mailrequest_id}}"
+								onclick="return confirm('want to confirm ?');">Confirm</a></td>
+							<td><a
+								th:href="@{'/changeCancelmmailPm/' + ${emp.mailrequest_id} }"
+								onclick="return confirm('want to cancel ?');">Cancel</a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</center>
+</body>
+</html>

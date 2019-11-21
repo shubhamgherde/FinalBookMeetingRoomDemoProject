@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:fragment="headerfiles">
+<title>Introduction to SpringBoot Security</title>
+<meta charset="UTF-8" />
+
+<link th:href="@{/tableFormat.css}" rel="stylesheet">
+</head>
+<body>
+<div th:insert="adminHome"></div>
+
+
+
+	
+	<div align="center" class="container-fluid" style="margin-top: 30px;">
+		<div class="row col-lg-4 col-lg-offset-4"
+			style="margin-top: 40px; background-color: #fff; padding: 20px; border: solid 1px #ddd;">
+			<form autocomplete="off" action="#" th:action="@{/addRoom}"
+				th:object="${room}" method="post" class="form-signin" role="form">
+				<h3 class="form-signin-heading">Add New Room</h3>
+
+				<div class="form-group">
+					<div class="">
+						<input type="text" th:field="*{room_name}" placeholder="Room_Name"
+							class="form-control" />
+					</div>
+				</div>
+
+				<div class="form-group">
+					<div class="">
+						<tr>
+							<td>Location:</td>
+							<td><select th:field="*{location}">
+									<option value="RABALE">RABALE</option>
+									<option value="DADAR">DADAR</option>
+									<option value="THANE">THANE</option>
+							</select></td>
+						</tr>
+					</div>
+				</div>
+
+
+
+				<div class="form-group">
+					<div class="">
+						<tr>
+							<td>Facility:</td>
+							<td><select th:field="*{facility}" multiple="multiple">
+									<option value="1">PROJRCTOR</option>
+									<option value="2">LAPTOP</option>
+									<option value="3">SPEAKER</option>
+									<option value="4">MIKE</option>
+									<option value="5">HEADPHONE</option>
+									<option value="6">LAN_CONNECTION</option>
+							</select></td>
+						</tr>
+
+					</div>
+				</div>
+
+
+				<div class="form-group">
+					<div class="">
+						<button type="submit" class="btn btn-primary btn-block">Add
+							Room</button>
+					</div>
+				</div>
+		</div>
+		<span th:utext="${successMessage}"></span>
+		<div class="alert alert-success alert-dismissible col-sm-12"
+			th:if="${(bindingResult !=null && bindingResult.getAllErrors() !=null)}">
+			<button type="button" class="close" data-dismiss="alert"
+				aria-hidden="true">x</button>
+			<ul th:each="data:${bindingResult.getAllErrors()}">
+				<li
+					th:text="${data.getObjectName() + ' :: ' + data.getDefaultMessage()}"></li>
+			</ul>
+		</div>
+		</form>
+	</div>
+</body>
+</html>

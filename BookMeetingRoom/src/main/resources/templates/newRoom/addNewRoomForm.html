@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:fragment="headerfiles">
+
+<meta charset="UTF-8" />
+<style>
+#main {
+	width: 950px;
+	height: 550px; /
+	display: -webkit-flex; / Safari */ / -webkit-align-items : center; /
+	Safari 7.0+ */ display : flex;
+	align-items: center;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+input[type=text], select, textarea {
+	width: 80%;
+	padding: 12px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	resize: vertical;
+}
+
+label {
+	padding: 12px 12px 12px 0;
+	display: inline-block;
+}
+
+input[type=submit] {
+	background-color: #4CAF50;
+	color: white;
+	padding: 12px 20px;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	position: relative;
+	left: 140px; //
+	float: center;
+}
+
+input[type=submit]:hover {
+	background-color: #45a049;
+}
+</style>
+
+</head>
+<body>
+	<div th:insert="adminHome"></div>
+	<div align="center">
+		<form action="#" th:action="@{/addroom}" th:object="${room}"
+			method="post">
+
+			<table border="0" cellpadding="10">
+				<tr>
+					<td></td>
+					<td><input type="hidden" th:field="*{id}" readonly="readonly" /></td>
+				</tr>
+				<tr>
+					<td>Room Name:</td>
+					<td><input type="text" th:field="*{room_name}" /></td>
+				</tr>
+
+				<tr>
+					<td>Location:</td>
+					<td><select th:field="*{location}">
+							<option value="RABALE">RABALE</option>
+							<option value="DADAR">DADAR</option>
+							<option value="THANE">THANE</option>
+					</select></td>
+				</tr>
+				<tr>
+					<td>Facility:</td>
+					<td><select th:field="*{facility}" multiple="multiple">
+							<option value="1">PROJRCTOR</option>
+							<option value="2">LAPTOP</option>
+							<option value="3">SPEAKER</option>
+							<option value="4">MIKE</option>
+							<option value="5">HEADPHONE</option>
+							<option value="6">LAN_CONNECTION</option>
+					</select></td>
+				</tr>
+
+				<tr>
+					<td></td>
+					<td><input type="hidden" th:field="*{status}" /></td>
+				</tr>
+				<tr>
+					                    
+					<td colspan="2"><input type="submit" value="Add"></td>
+					                
+				</tr>
+
+
+			</table>
+		</form>
+	</div>
+</body>
+</html>

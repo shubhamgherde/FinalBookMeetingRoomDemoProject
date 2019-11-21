@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:fragment="headerfiles">
+    <title>Introduction to SpringBoot Security</title>
+    <meta charset="UTF-8"/>
+    <link th:href="@{~/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{~/fontawesome/css/all.css}" rel="stylesheet">
+    <link th:href="@{~/tableFormat.css}" rel="stylesheet">
+</head>
+<body>
+<div th:insert="adminHome"></div>
+</div>
+
+<div align="center">
+    <h1>All Rooms</h1>
+    <br/><br/>
+    <table border="1" >
+        <thead>
+            <tr>
+                <th> ID</th>
+                <th>room_name</th>
+                <th>location</th>
+       		    <th>facility</th>
+                 
+ 				<th>Action</th> 
+            </tr>
+        </thead>
+ <tbody>
+	<tr th:each="room :${listRoom}">
+	
+		<td th:text="${room.id}">ID</td>
+		<td th:text="${room.room_name}">Name</td>
+		<td th:text="${room.location}">Email</td>
+		<td th:text="${room.facility}">Facility</td>
+		<td>
+		<a th:href="@{'/editRoom/' + ${room.id}}">Edit</a>
+		</td>
+	</tr>
+</tbody> 
+ 
+ </table>
+ </div>
+</body></html>

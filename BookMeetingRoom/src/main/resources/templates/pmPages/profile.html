@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:fragment="headerfiles">
+
+<meta charset="UTF-8" />
+
+<style>
+.w3-button {width:150px;}
+
+
+#main {
+	width: 800px;
+	height: 50px; /
+	display: -webkit-flex; / Safari */ / -webkit-align-items : center; /
+	Safari 7.0+ */ display : flex;
+	align-items: center;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+input[type=text], select, textarea {
+	width: 300%;
+	padding: 12px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	resize: vertical;
+}
+
+label {
+	padding: 12px 12px 12px 0;
+	display: inline-block;
+}
+
+input[type=submit] {
+	background-color: #4CAF50;
+	color: white;
+	padding: 12px 20px;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	position: relative;
+	left: 240px; //
+	float: center;
+}
+
+input[type=submit]:hover {
+	background-color: #45a049;
+}
+</style>
+</head>
+
+<body>
+	<div th:insert="pmPages/pmHomeForAll"></div>
+
+	<h3>&nbsp Profile</h3>
+	<br> 
+	<center>
+		<div>
+			<br>
+			<form id="main" th:object="${userProfile}"
+				method="post">
+
+				
+					<table border="0">
+				
+					<tr>
+						<td>Email Id :</td>
+						<td><p th:name="user_mail"
+								th:text="${#httpServletRequest.remoteUser}" readonly="readonly" />
+
+						</td>
+					</tr>
+					<tr>
+						<td>Name :</td>
+						<td><p th:text="*{name}" readonly="readonly" /></td>
+					</tr>
+					<tr>
+						<td>Department :</td>
+						<td><p th:text="*{department}" readonly="readonly" /></td>
+					</tr>
+
+					<tr>
+						<td>Role :</td>
+						<td><p th:text="*{roles}" readonly="readonly" /></td>
+					</tr>
+
+				</table>
+			</form>
+			
+					</div>
+
+	</center>
+</body>
+</html>
+

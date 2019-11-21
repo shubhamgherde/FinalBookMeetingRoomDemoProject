@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<style>
+#main {
+	width: 550px;
+	height: 550px; /
+	display: -webkit-flex; / Safari */ / -webkit-align-items : center; /
+	Safari 7.0+ */ display : flex;
+	align-items: center;
+	
+}
+
+</style>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div th:insert="pmPages/pmHomeForAll"></div>
+	<h3>Change Email</h3>
+<center>
+	
+	<br>
+	
+	<div id="main">
+		<form action="#" th:action="@{/edit_mailPm}"
+			th:object="${mail_request}" method="post">
+
+			<table border="0" cellpadding="10">
+
+				<tr>
+					<td>Email Id :</td>
+					<td><p th:name="user_mail"
+							th:text="${#httpServletRequest.remoteUser}" readonly="readonly" />
+							<td><input type="hidden" th:name="user_mail"
+							th:value="${#httpServletRequest.remoteUser}" readonly="readonly" />
+
+						</td>
+
+
+						</td>
+				</tr>
+
+				<tr>
+					<td>Enter new Email Id :</td>
+					<td><input type="text" th:name="new_user_mail" /></td>
+				</tr>
+				<tr>
+
+					<td></td>
+					<td><input type="hidden" th:value="${role}" th:name="role" />
+
+					</td>
+				</tr>
+
+				<tr>
+
+					<td></td>
+					<td><input type="hidden" th:value="${dept}"
+						th:name="department" /></td>
+				</tr>
+
+				<tr>
+					                    
+					<td colspan="2"><button type="submit"
+							onclick="return alert('Request has been submitted ?');">submit</button></td>
+					                
+				</tr>
+
+			</table>
+		</form></div>
+</center>
+</body>
+</html>

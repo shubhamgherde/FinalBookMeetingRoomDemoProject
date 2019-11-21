@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:fragment="headerfiles">
+<title>Introduction to SpringBoot Security</title>
+<meta charset="UTF-8" />
+<link th:href="@{~/bootstrap.min.css}" rel="stylesheet">
+<link th:href="@{~/fontawesome/css/all.css}" rel="stylesheet">
+<link th:href="@{~/tableFormat.css}" rel="stylesheet">
+<style>
+#main {
+	width: 950px;
+	height: 50px; /
+	display: -webkit-flex; / Safari */ / -webkit-align-items : center; /
+	Safari 7.0+ */ display : flex;
+	align-items: center;
+}
+
+.container {
+	margin-top: 40px;
+}
+
+.btn-primary {
+	width: 100%;
+}
+</style>
+
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/momentjs/2.14.1/moment.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+<script>
+	$(function() {
+		$('#datetimepicker1').datetimepicker({
+			 format: 'DD-MM-YYYY HH:mm:ss'
+				
+		});
+	});
+
+	$(function() {
+		$('#datetimepicker2').datetimepicker({
+			 format: 'DD-MM-YYYY HH:mm:ss'
+				 
+		});
+	});
+</script>
+
+</head>
+<body>
+	<div th:insert="pmPages/pmHomeForAll"></div>
+	<br>
+
+	<br>
+	<div align="center">
+
+
+		<form action="#" th:action="@{/book_room_datePm}" th:object="${date}"
+			method="post">
+
+			<table border="0" cellpadding="1" style="float: right">
+				<tr>
+					<td>
+						<div class='col-md-6'>
+							<div class="form-group">
+								<label class="control-label">Select Start DATE and TIME</label>
+								<div class='input-group date' id='datetimepicker2'>
+									<input type="text" th:field="*{date1}" class="form-control" />
+									<span class="input-group-addon"> <span
+										class="glyphicon glyphicon-calendar"></span>
+									</span>
+								</div>
+							</div>
+						</div>
+
+					</td>
+				</tr>
+
+				<tr>
+					<td>
+						<div class='col-md-6'>
+							<div class="form-group">
+								<label class="control-label">Select End DATE and TIME</label>
+								<div class='input-group date' id='datetimepicker1'>
+									<input type="datetime" th:field="*{date2}" class="form-control" />
+									<span class="input-group-addon"> <span
+										class="glyphicon glyphicon-calendar"></span>
+									</span>
+								</div>
+							</div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2"><button type="submit" class="button">View
+							Availability</button></td>                 
+				</tr>
+			</table>
+		</form>
+	</div>
+	<br>
+	<br>
+	<br>
+
+	<br>
+	<div align="center">
+		<br> <br>
+		<br> <br>     
+		<table border="1">
+			        
+			<thead>
+
+				                
+				<th>ID</th>                 
+				<th>Room_name</th>                 
+				<th>Location</th>          
+				<th>Facility</th>
+				<th>Action</th>                          
+			</thead>
+			<tbody>
+				<tr th:each="bookRoom :${list}">
+
+					<td th:text="${bookRoom.id}">ID</td>
+					<td th:text="${bookRoom.room_name}">Name</td>
+					<td th:text="${bookRoom.location}">location</td>
+					<td th:text="${bookRoom.facility}">facility</td>
+
+					<td> <!-- + '/' + ${date.date1}+ '/' + ${date.date2} -->
+						 <!-- <a th:href="@{/bookRoomForm/ + '/' + ${bookRoom.id} + '/' + ${date.date1}+ '/' + ${date.date2}}">Book</a>   -->
+						 
+						<!-- <a th:href="@{|/bookRoomForm/ + '/' + ${bookRoom.id}}">Book</a>   -->
+						<a th:href="@{'/bookRoomFormPm/' + ${bookRoom.id} + '/' + ${date1} + '/' + ${date2}}" onclick="return confirm('want to confirm ?');">Book</a>
+					</td>
+				</tr>
+			</tbody>
+
+		</table>
+	</div>
+
+
+	<!-- <center>
+<div class="pagination" >
+<tr>
+<td th:each="pageNumber : ${pageNumbers}">
+<a th:href="@{|/book_room_date/${pageNumber}|}" th:text=${pageNumber}>1</a></td>
+
+</tr>
+</div>
+</center>
+-->
+</body>
+</html>

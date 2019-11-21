@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:fragment="headerfiles">
+    <title>Introduction to SpringBoot Security</title>
+    <meta charset="UTF-8"/>
+    <link th:href="@{~/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{~/fontawesome/css/all.css}" rel="stylesheet">
+</head>
+<body>
+<div th:insert="adminHome"></div>
+
+<div align="center">
+        <h1>Create New User</h1>
+        <br />
+        <form action="#" th:action="@{/saveRoom}" th:object="${room}"
+            method="post">
+ 
+            <table border="0" cellpadding="10">
+                  <tr>
+                    <td></td>
+                    <td><input type="hidden" th:field="*{id}" readonly="readonly" /></td>
+                </tr>
+                <tr>
+                    <td>Room Name:</td>
+                    <td><input type="text" th:field="*{room_name}"  /></td>
+                </tr>
+                 
+                 <tr> 
+                    <td>Location:</td>
+                    <td>
+                    <select th:field="*{location}">
+    <option value="RABALE">RABALE</option>
+    <option value="DADAR">DADAR</option>
+    <option value="THANE">THANE</option>
+</select></td>
+                </tr>
+                <tr> 
+                    <td>Facility:</td>
+                    <td>
+                    <select th:field="*{facility}" multiple="multiple">
+    <option value="1">PROJRCTOR</option>
+    <option value="2">LAPTOP</option>
+    <option value="3">SPEAKER</option>
+    <option value="4">MIKE</option>
+	<option value="5">HEADPHONE</option>
+	<option value="6">LAN_CONNECTION</option>
+</select></td>
+                </tr>
+                
+                <tr>
+                    <td></td>
+                    <td><input type="hidden" th:field="*{status}"  /></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><button type="submit">Save</button> </td>
+                </tr>
+             
+                
+            </table>
+        </form>
+    </div>
+
+
+</body></html>

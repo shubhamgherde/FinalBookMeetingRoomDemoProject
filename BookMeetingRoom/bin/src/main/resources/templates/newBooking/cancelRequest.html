@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:fragment="headerfiles">
+<title>Introduction to SpringBoot Security</title>
+<meta charset="UTF-8" />
+
+<link th:href="@{~/tableFormat.css}" rel="stylesheet">
+<style>
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: #111;
+}
+</style>
+
+</head>
+<body>
+	<div th:insert="adminHome"></div>
+	
+<div align="center">
+
+
+<h2 align="left">Cancel Request</h2>
+
+	
+
+    <table border="1" >
+        <thead>		
+            <tr>
+                <th>Booking_ID</th>
+                <th>Room ID</th>
+                <th>Start Date Time</th>
+                <th>End Date Time</th>
+                <th>User Email</th>
+
+
+
+ 				
+            </tr>
+        </thead>
+
+<tbody>
+	<tr th:each="roomRequest :${listRoom}">
+	
+		<td th:text="${roomRequest.booking_id}">Booking_ID</td>
+		<td th:text="${roomRequest.id}">ID</td>
+		<td th:text="${roomRequest.bookingDateFrom}">Start date</td>
+		<td th:text="${roomRequest.bookingDateTo}">End Date</td>
+		
+		<td th:text="${roomRequest.user_mail}">User Email</td>
+		
+		
+		
+		
+	</tr>
+</tbody> 
+ 
+ </table>
+ </div>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:fragment="headerfiles">
+<title>Introduction to SpringBoot Security</title>
+<meta charset="UTF-8" />
+<style>
+#main {
+	width: 7000px;
+	height: 550px; /
+	display: -webkit-flex; / Safari */ / -webkit-align-items : center; /
+	Safari 7.0+ */ display : flex;
+	align-items: center;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+input[type=text], select, textarea {
+	width: 100%;
+	padding: 12px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	resize: vertical;
+}
+
+label {
+	padding: 12px 12px 12px 0;
+	display: inline-block;
+}
+
+input[type=submit] {
+	background-color: #4CAF50;
+	color: white;
+	padding: 12px 20px;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	position: relative;
+	left: 240px; //
+	float: center;
+}
+
+input[type=submit]:hover {
+	background-color: #45a049;
+}
+</style>
+</head>
+
+<body>
+	<div th:insert="pmPages/pmHomeForAll"></div>
+
+	<h3>&nbsp Book Room</h3>
+	<br>
+	<center>
+		<div>
+
+			<br>
+
+
+			<form action="#" th:action="@{/bookRoomPm}" th:object="${room}"
+				method="post">
+
+				<table style="text-align: left">
+					<tr>
+						<td>Email Id :</td>
+						<td><input type="text" th:name="user_mail"
+							th:value="${#httpServletRequest.remoteUser}" readonly="readonly" />
+
+						</td>
+					</tr>
+					<tr>
+						<td>Room Id :</td>
+						<td><input type="text" th:field="*{id}" readonly="readonly" /></td>
+					</tr>
+
+					<tr>
+						<td>Start DATE TIME:</td>
+						<td><input type="text" th:name="bookingDateFrom"
+							th:value="${date1}" readonly="readonly" /></td>
+					</tr>
+
+					<tr>
+						<td>End DATE TIME:</td>
+						<td><input type="text" th:name="bookingDateTo"
+							th:value="${date2}" readonly="readonly" /></td>
+					</tr>
+
+					<tr>
+						               
+						<td colspan="2"><button type="submit">Book</button></td>               
+					</tr>
+
+
+				</table>
+
+			</form>
+
+		</div>
+
+	</center>
+</body>
+</html>

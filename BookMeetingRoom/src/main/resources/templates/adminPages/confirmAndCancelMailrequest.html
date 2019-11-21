@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:fragment="headerfiles">
+<title>Introduction to SpringBoot Security</title>
+<meta charset="UTF-8" />
+
+<link th:href="@{/tableFormat.css}" rel="stylesheet">
+<style>
+.pagination {
+	display: inline-block;
+}
+
+.pagination a {
+	color: black;
+	float: left;
+	padding: 8px 16px;
+	text-decoration: none;
+}
+
+.pagination a.active {
+	background-color: #4CAF50;
+	color: white;
+	border-radius: 5px;
+}
+
+.pagination a:hover:not (.active ) {
+	background-color: #ddd;
+	border-radius: 5px;
+}
+</style>
+</head>
+<body>
+	<div th:insert="adminHome"></div>    
+	<h3>
+		<p th:text="${message}" />
+	</h3>
+	<div align="center">
+		    <br />
+		<br />     
+		<table border="1" cellpadding="10">
+			        
+			<thead>
+				            
+				<tr>
+					               
+					<th>Request ID</th>                 
+					<th>User_mail</th>                 
+					<th>New_User_mail</th>             
+				</tr>
+				        
+			</thead>
+			<tbody>
+				<tr th:each="emp :${mail}">
+
+					<td th:text="${emp.mailrequest_id}">Booking ID</td>
+					<td th:text="${emp.user_mail}">Room ID</td>
+
+					<td th:text="${emp.new_user_mail}">User_mail</td>
+
+				</tr>
+			</tbody>
+
+		</table>
+	</div>
+</body>
+</html>

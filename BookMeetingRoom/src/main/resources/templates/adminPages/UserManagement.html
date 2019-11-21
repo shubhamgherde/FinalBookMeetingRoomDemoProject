@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:fragment="headerfiles">
+
+<meta charset="UTF-8" />
+<link th:href="@{/bootstrap.min.css}" rel="stylesheet">
+<link th:href="@{/fontawesome/css/all.css}" rel="stylesheet">
+<link th:href="@{/tableFormat.css}" rel="stylesheet">
+
+</head>
+<body>
+	<div th:insert="adminHome"></div>
+	<div align="center">
+		    
+		<h1>User Management</h1>
+		    <br />
+		<br />     
+		<table border="1">
+			        
+			<thead>
+				            
+				<tr>
+					                
+					<th>ID</th>                 
+					<th>Name</th>                 
+					<th>Email</th>                 
+					<th>Department</th>                 
+					<th>Status</th>
+					<th>Roles</th>
+					<th>Action</th>             
+				</tr>
+				        
+			</thead>
+			<tbody>
+				<tr th:each="user :${listUser}">
+
+					<td th:text="${user.id}">ID</td>
+					<td th:text="${user.name}">Name</td>
+					<td th:text="${user.email}">Email</td>
+					<td th:text="${user.department}">Department</td>
+					<td th:text="${user.status}">Status</td>
+					<td th:text="${user.roles}">Roles</td>
+
+					<td><a th:href="@{'/edit/' + ${user.id}}">Edit</a></td>
+				</tr>
+			</tbody>
+
+		</table>
+	</div>
+</body>
+</html>

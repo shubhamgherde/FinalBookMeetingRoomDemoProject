@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:fragment="headerfiles">
+<title>Introduction to SpringBoot Security</title>
+<meta charset="UTF-8" />
+
+<link th:href="@{~/tableFormat.css}" rel="stylesheet">
+<style>
+div.relative {
+  position: relative;
+  left: 417px;
+  /* border: 3px solid #73AD21; */
+}
+
+
+.pagination {
+display: inline-block;
+}
+
+.pagination a {
+color: black;
+float: left;
+padding: 8px 16px;
+text-decoration: none;
+}
+
+.pagination a.active {
+background-color: #4CAF50;
+color: white;
+border-radius: 5px;
+}
+
+.pagination a:hover:not(.active) {
+background-color: #ddd;
+border-radius: 5px;
+}
+
+
+
+</style>
+</head>
+<body>
+	<div th:insert="adminHome"></div>
+	<div align="center">
+<div class="relative"><h2><a href="#" th:href="@{~/addRoom}">Add</a></h2></div>
+	
+    <table border="1" >
+        <thead>
+            <tr>
+                <th> ID</th>
+                <th>room_name</th>
+                <th>location</th>
+       		    <th>facility</th>
+                 
+ 				<th>Action</th> 
+            </tr>
+        </thead>
+ <tbody>
+	<tr th:each="room :${list}">
+	
+		<td th:text="${room.id}">ID</td>
+		<td th:text="${room.room_name}">Name</td>
+		<td th:text="${room.location}">Email</td>
+		<td th:text="${room.facility}">Facility</td>
+		<td>
+		<a th:href="@{'/edit_room/' + ${room.id}}">Edit</a>
+		</td>
+	</tr>
+</tbody> 
+ 
+ </table>
+ 
+ </div>
+	<center>
+	<div  class="pagination" >
+	<tr>
+		<td th:each="pageNumber : ${pageNumbers}">
+		<a th:href="@{|/roomManagement/${pageNumber}|}" th:text=${pageNumber}>1</a></td>
+	
+	</tr>
+	</div>
+	</center>
+	 </div></body>
+</html>

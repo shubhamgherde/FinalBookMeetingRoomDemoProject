@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<style>
+.abcd{
+	color: "red";
+}
+</style>
+
+</head>
+
+	<div style="background-color: #337ab7; height: 50px;"></div>
+	<div class="container-fluid" style="margin-top: 30px;">
+
+		<div class="row col-lg-4 col-lg-offset-4" style="margin-top: 40px; background-color: #fff; padding: 20px; border: solid 1px #ddd;">
+			<form autocomplete="off" action="#" th:action="@{/login}" th:object="${user}" method="get" class="form-signin" role="form">
+				<h3 class="form-signin-heading"></h3>
+				
+				<body style="background-color: #ededed;">
+				<span th:text="'A verification email has been sent to: ' + ${email}"></span>
+				
+			</form>
+		</div>
+	</div>
+</body>
+</html>
+
+
+
+

@@ -1,0 +1,87 @@
+<!-- <html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:fragment="headerfiles">
+<title>Introduction to SpringBoot Security</title>
+<meta charset="UTF-8" />
+
+<link th:href="@{~/tableFormat.css}" rel="stylesheet">
+</head>
+<body>
+<div th:insert="newUser/userHomeForAll"></div> 
+ hell
+
+</body>
+</html>
+
+ -->
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:fragment="headerfiles">
+<title>Introduction to SpringBoot Security</title>
+<meta charset="UTF-8" />
+
+<link th:href="@{~/tableFormat.css}" rel="stylesheet">
+<style>
+ul {
+list-style-type: none;
+margin: 0;
+padding: 0;
+overflow: hidden;
+background-color: #333;
+}
+
+li {
+float: left;
+}
+
+li a {
+display: block;
+color: white;
+text-align: center;
+padding: 14px 16px;
+text-decoration: none;
+}
+
+li a:hover {
+background-color: #111;
+}
+</style>
+
+</head>
+<body>
+<div th:insert="newUser/userHomeForAll"></div> 
+
+
+
+<div align="center">
+
+    <table border="1" >
+        <thead>	
+            <tr>
+                <th>Id</th>
+
+                <th>Name</th>
+                <th>Email</th>
+
+               
+
+            </tr>
+        </thead>
+
+<tbody>
+<tr th:each="tl :${list}">
+<td th:text="${tl.id}">Id</td>
+
+<td th:text="${tl.name}">Name</td>
+<td th:text="${tl.email}">Email</td>
+
+
+</tr>
+</tbody> 
+
+</table>
+</div>
+</body>
+</html>
